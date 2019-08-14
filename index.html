@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Wellnessliving_test</title>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+<main class="wrapper">
+	<section class="product-cart wrapper__product-cart">
+		<header>
+			<h1 class="product-cart__title">Product Cart</h1>
+		</header>
+		<div id="mark_product" class="cart-table"></div>
+		<aside class="cart-panel">
+			<div id="mark_total" class="cart-panel__wrapper"></div>
+		</aside>
+	</section>	
+</main>
+<script id="tpl-product" type="text/x-handlebars-template">
+	<div class="table-title">
+		<div class="table-title__cell cart-table__cell_width_1">Item</div>
+		<div class="table-title__cell cart-table__cell_width_2">Price</div>
+		<div class="table-title__cell cart-table__cell_width_3">Qty</div>
+		<div class="table-title__cell cart-table__cell_width_4">Subtotal</div>
+	</div>
+	{{#each this}}
+		<div class="table-string" data-id="{{id}}">
+			<div class="table-string__cell cart-table__cell_width_1">
+				<div class="table-string__wrap-img">
+					<div class="icon-close">
+						<span class="icon-close__element icon-close__element_angle_plus"></span>
+						<span class="icon-close__element icon-close__element_angle_minus"></span>
+					</div>
+					<img class="table-string__img" src="./img/{{img}}">
+				</div>
+				<div class="table-string__wrap-name">
+					<a href="#" class="table-string__name">{{name}}</a>
+				</div>
+			</div>
+			<div class="table-string__cell cart-table__cell_width_2">
+				<div class="table-string__wrapper">$ {{price}}</div>
+			</div>
+			<div class="table-string__cell cart-table__cell_width_3">
+				<div class="table-string__wrapper">
+					<input class="table-string__amount" type="number" min="1" max="9999" value="{{val}}">
+				</div>
+			</div>
+			<div class="table-string__cell cart-table__cell_width_4">
+				<div class="table-string__wrapper">$ {{priceSum}}</div>
+			</div>
+		</div>
+	{{/each}}
+</script>
+<script id="tpl-empty" type="text/x-handlebars-template">
+	<div class="cart-empty">Сart is empty!</div>
+</script>
+<script id="tpl-total" type="text/x-handlebars-template">
+	<div class="wrapper-summary">
+		<div class="wrapper-summary__box">
+			<div class="title-summary">Summary</div>
+			<ul class="list-summary">
+				<li class="list-summary__string">
+					<span class="list-summary__name">Subtotal</span>
+					<span class="list-summary__value">: ${{subTotal}}</span>
+				</li>
+				<li class="list-summary__string">
+					<span class="list-summary__name">Shipping cost</span>
+					<span class="list-summary__value">: ${{shipping}}</span>
+				</li>
+				<li class="list-summary__string">
+					<span class="list-summary__name">Tax</span>
+					<span class="list-summary__value">: ${{tax}}</span>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="wrapper-total">
+		<div class="wrapper-total__box">
+			<div class="total-display">
+				<span class="total-display__name">Order Total</span>
+				<span class="total-display__value">: ${{total}}</span>
+			</div>
+			<a class="button-buy" href="#">go to checkout</a>
+		</div>
+	</div>
+</script>
+<script src="./js/jquery-3.4.1.min.js"></script>
+<script src="./js/handlebars-v4.1.2.js"></script>
+<script src="./js/main.js"></script>
+</body>
+</html>
